@@ -12,3 +12,4 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'corneal'
+gem 'rack-flash3'
