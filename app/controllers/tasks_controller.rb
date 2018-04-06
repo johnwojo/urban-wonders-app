@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  get '/tasks' do
+  get '/tasks/' do
     if logged_in?
       @tasks = Task.all
     erb :'tasks/tasks'
@@ -16,13 +16,12 @@ class TasksController < ApplicationController
     end
   end
 
-
     post '/tasks' do
       if logged_in?
         if params[:name] == ""
           redirect to '/tasks/new'
         else
-          @task = current_user.tasks.build(name: params[:name],description: params[:description)
+          @task = Task.new(name: params[:name],description: params[:description])
           if @task.save
             redirect to "/tasks/#{@task.id}"
           else
@@ -38,7 +37,7 @@ class TasksController < ApplicationController
     get '/tasks/:id' do
       if logged_in?
         @task = Task.find_by_id(params[:id])
-        erb :'/tasks/show_city'
+        erb :'/tasks/show_task'
       else
         redirect to '/login'
       end
@@ -50,7 +49,7 @@ class TasksController < ApplicationController
         @task = Task.find_by_id(params[:id])
         if @task
           # && @city.user == current_user
-          erb :'cities/edit_task'
+          erb :'tasks/edit_task'
         else
           redirect to '/tasks'
         end
@@ -69,13 +68,10 @@ class TasksController < ApplicationController
           @task.name = params[:name]
           @task.description = params[:description]
           @task.save
-          redirect to "/cities/#{@task.id}"
+          redirect to "/tasks/#{@task.id}"
         end
       else
         redirect to '/login'
       end
     end
-
-
-
 end
