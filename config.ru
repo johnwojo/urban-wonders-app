@@ -7,4 +7,5 @@ end
 use Rack::MethodOverride
 use CitiesController
 use TasksController
+use UsersController
 run ApplicationController
