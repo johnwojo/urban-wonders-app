@@ -1,1 +1,6 @@
-Edit a city! 
+<h1>Edit City</h1>
+<form method="POST" action="/cities/<%=@city.id%>">
+<input type="hidden" name="_method" value="patch" id="hidden">
+<input type="text" name="name" value="<%=@city.name%>">
+<input type="submit" name="submit" value="submit">
+</form>

@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
-  get '/cities' do
+
+  get '/cities/' do
     if logged_in?
       @cities = City.all
     erb :'cities/cities'
@@ -16,7 +17,7 @@ class CitiesController < ApplicationController
     end
   end
 
-post '/cities' do
+  post '/cities' do
     if logged_in?
       if params[:name] == ""
         redirect to '/cities/new'
@@ -42,5 +43,38 @@ post '/cities' do
       redirect to '/login'
     end
   end
+
+
+  get '/cities/:id/edit' do
+    if logged_in?
+      @city = City.find_by_id(params[:id])
+      if @city
+        # && @city.user == current_user
+        erb :'cities/edit_city'
+      else
+        redirect to '/cities'
+      end
+    else
+      redirect to '/login'
+    end
+  end
+
+
+  patch '/cities/:id' do
+    if logged_in?
+      if params[:name] == ""
+        redirect to "/cities/#{params[:id]}/edit"
+      else
+        @city = City.find_by_id(params[:id])
+        @city.name = params[:name]
+        @city.save
+        redirect to "/cities/#{@city.id}"
+      end
+    else
+      redirect to '/login'
+    end
+  end
+
+
 
 end
