@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     erb :'users/show'
   end
 
-  get 'signup' do
+  get '/signup' do
     if logged_in?
       erb :'users/show'
     else
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
   end
 
-  post 'signup' do
+  post '/signup' do
     if params[:username] == "" || params[:password] == "" || params[:email] == ""
     redirect to "/signup"
     else
