@@ -1,1 +1,4 @@
-These are your tasks.
+<h1>Welcome, <%=current_user.username%></h1>
+<% @cities.each do |city| %>
+<p><%= city.name%></p>
+<% end %>
