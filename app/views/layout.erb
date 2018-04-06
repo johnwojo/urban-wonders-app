@@ -1,2 +1,35 @@
-This is the layout.
- <%= yield %>
+<!doctype html>
+<html>
+  <head>
+    <title>Urban Wonders</title>
+  </head>
+  <body>
+    This is the layout.
+    <% if logged_in? %>
+      <a href="/index">New Tweet</a>
+      <a href="/index">Log Out</a>
+
+    <% else %>
+      <a href="/index">Sign Up</a>
+      <a href="/index">Login</a>
+      <% end %>
+    <div class="container">
+      <%=yield%>
+    </div>
+  </body>
+</html>
+
+<!--
+     <% if logged_in? %>
+       <a href="/tweets/new">New Tweet</a>
+       <a href="/logout">Log Out</a>
+
+     <% else %>
+       <a href="/signup">Sign Up</a>
+       <a href="/login">Login</a>
+       <% end %>
+     <div class="container">
+       <%=yield%>
+     </div>
+   </body>
+ </html> -->
