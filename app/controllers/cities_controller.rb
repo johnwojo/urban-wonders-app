@@ -76,5 +76,19 @@ class CitiesController < ApplicationController
   end
 
 
+  delete '/cities/:id/delete' do
+    if logged_in?
+      @city = City.find_by_id(params[:id])
+      if @city
+        #  && @city.user == current_user
+        @city.delete
+      end
+      redirect to '/cities/'
+    else
+      redirect to '/login'
+    end
+  end
+
+
 
 end
