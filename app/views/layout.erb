@@ -38,8 +38,8 @@
     <a href="/logout">Log Out</a>
 
   <% else %>
-    <a href="/signup">Sign Up</a>
-    <a href="/login">Login</a>
+    <a href="/signup">Sign Up</a>&nbsp;&nbsp;
+    <a href="/login/">Login</a>
     <% end %>
   <h1>Urban Wonder</h1>
   <p>The world is full of adventure!</p>
@@ -55,16 +55,16 @@
           <p><%=city.name%></p>
           <% end %>
       <% else %>
-      <h3><a href="/login/">Login!</a></h3>
+        <h3><a href="/login/">Login!</a></h3>
+        <p>Log in to Urban Wonder and plan your next getaway! </p>
       <%end%>
     </div>
     <div class="col-sm-4">
       <%=yield%>
     </div>
     <div class="col-sm-4">
-      <h3>Column 3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      <h3>Memories</h3>
+      <p>This is a list of your completed actions. Read through them for a walk down memory lane.</p>
     </div>
   </div>
 </div>
