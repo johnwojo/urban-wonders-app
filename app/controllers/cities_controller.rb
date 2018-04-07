@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
 
   get '/cities/' do
     if logged_in?
-      @cities = City.all
+      @cities = current_user.cities
     erb :'cities/cities'
     else
       redirect to '/login'
@@ -11,8 +11,8 @@ class CitiesController < ApplicationController
 
   get '/cities/new' do
     if logged_in?
-        @cities = City.all
-      erb :'cities/create_city'
+      @cities = current_user.cities
+        erb :'cities/create_city'
     else
       redirect to '/login'
     end
@@ -89,7 +89,4 @@ class CitiesController < ApplicationController
       redirect to '/login'
     end
   end
-
-
-
 end

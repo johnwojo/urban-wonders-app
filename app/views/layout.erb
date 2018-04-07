@@ -50,7 +50,7 @@
     <div class="col-sm-4">
       <% if logged_in? %>
         <h3><a href="/cities/new">My Cities</a></h3>
-          <% @cities = City.all %>
+          <%  @cities = current_user.cities %>
           <% @cities.each do |city| %>
           <p><%=city.name%></p>
           <% end %>
