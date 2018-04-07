@@ -10,10 +10,16 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    if logged_in?
+      @cities = City.all
+      erb :index
+    else
+      erb :index
+    end
   end
 
   get '/index' do
+    @cities = City.all
     erb :index
   end
 

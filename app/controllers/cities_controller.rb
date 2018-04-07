@@ -11,6 +11,7 @@ class CitiesController < ApplicationController
 
   get '/cities/new' do
     if logged_in?
+        @cities = City.all
       erb :'cities/create_city'
     else
       redirect to '/login'

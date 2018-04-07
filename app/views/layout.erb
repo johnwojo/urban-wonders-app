@@ -45,17 +45,21 @@
   <p>The world is full of adventure!</p>
 </div>
 
-<div class="container text-center">
+<div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <h3>My Cities</h3>
-      <% @cities.each do |city| %>
-      <p><%=city.name%></p>
-      <% end %>
-
+      <% if logged_in? %>
+        <h3><a href="/cities/new">My Cities</a></h3>
+          <% @cities = City.all %>
+          <% @cities.each do |city| %>
+          <p><%=city.name%></p>
+          <% end %>
+      <% else %>
+      <h3><a href="/login/">Login!</a></h3>
+      <%end%>
     </div>
     <div class="col-sm-4">
-        <%=yield%>
+      <%=yield%>
     </div>
     <div class="col-sm-4">
       <h3>Column 3</h3>
