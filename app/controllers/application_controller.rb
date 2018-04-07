@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
-      @cities = City.all
+      @cities = current_user.cities
       erb :index
     else
       erb :index
@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/index' do
-    @cities = City.all
+    @cities = current_user.cities
     erb :index
   end
 
