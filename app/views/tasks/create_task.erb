@@ -5,4 +5,12 @@
 <p>Select A City: <input type="text" name="city_id"></p>
 <p>If no city is listed, create one!</p>
 <input type="submit" name="submit" value="submit">
-</form>
+<!--
+<%@pets.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+<%end%>
+
+<%@current_user.cities.each do |city|%>
+    <input type="checkbox" name="city[task_ids][]" value="<%=task.id%>" id="<%=task.id%>"><%=task.name%></input>
+<%end%>
+</form> -->
