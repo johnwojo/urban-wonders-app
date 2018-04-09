@@ -21,7 +21,7 @@ class TasksController < ApplicationController
       if params[:name] == ""
         redirect to '/tasks/new'
       else
-        @task = Task.new(name: params[:name],description: params[:description])
+        @task = Task.new(params[city])
         if @task.save
           redirect to "/tasks/#{@task.id}"
         else
