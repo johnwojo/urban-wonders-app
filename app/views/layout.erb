@@ -33,8 +33,8 @@
 
 <div class="jumbotron text-center">
   <% if logged_in? %>
-    <a href="/cities/new">New City</a>&nbsp;&nbsp;
-    <a href="/tasks/new">New Action</a>&nbsp;&nbsp;
+    <a href="/cities/new">Add City</a>&nbsp;&nbsp;
+    <a href="/tasks/new">Add Experience</a>&nbsp;&nbsp;
     <a href="/logout">Log Out</a>
 
   <% else %>
@@ -49,11 +49,12 @@
   <div class="row">
     <div class="col-sm-4">
       <% if logged_in? %>
-        <h3><a href="/cities/new">My Cities</a></h3>
-          <%  @cities = current_user.cities %>
+        <h3><a href="/cities/">My Cities</a></h3>
+          <% @cities = @current_user.cities %>
           <% @cities.each do |city| %>
           <p><%=city.name%></p>
           <% end %>
+          <%= @current_user %>
       <% else %>
         <h3><a href="/login/">Login!</a></h3>
         <p>Log in to Urban Wonder and plan your next getaway! </p>
@@ -64,7 +65,7 @@
     </div>
     <div class="col-sm-4">
       <h3>Memories</h3>
-      <p>This is a list of your completed actions. Read through them for a walk down memory lane.</p>
+      <p>This is a list of your completed experiences. Read through them for a walk down memory lane.</p>
     </div>
   </div>
 </div>

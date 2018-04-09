@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   post '/login' do
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
@@ -52,5 +51,4 @@ class UsersController < ApplicationController
       redirect to "/"
     end
   end
-
 end
