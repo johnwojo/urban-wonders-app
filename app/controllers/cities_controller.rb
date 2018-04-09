@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
 
   get '/cities' do
     if logged_in?
-      @cities = City.all
+      @cities = @current_user.cities
       erb :'cities/cities'
     else
       redirect to '/login'
@@ -23,9 +23,8 @@ class CitiesController < ApplicationController
       if params[:name] == ""
         redirect to '/cities/new'
       else
-        @city = City.create(:name => params["Name"])
+        @city = City.create(:name => params[:name])
         @city.user = User.find_or_create_by(:name => params["User Name"])
-        @city.user_ids = params[:users]
         @city.save
         # @city = current_user.cities.build(name: params[:name])
         if @city.save

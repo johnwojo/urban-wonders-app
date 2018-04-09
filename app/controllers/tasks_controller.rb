@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   get '/tasks' do
     if logged_in?
       @tasks = Task.all
-    erb :'tasks/tasks'
+      erb :'tasks/tasks'
     else
       redirect to '/login'
     end
