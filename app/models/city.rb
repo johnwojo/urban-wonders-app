@@ -1,5 +1,4 @@
 class City < ActiveRecord::Base
-  has_many :user_cities
-  has_many :users, through: :user_cities
+  belongs_to :user
   has_many :tasks
 end
