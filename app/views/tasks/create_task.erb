@@ -2,9 +2,9 @@
 <form method="POST" action="/tasks">
 <p>Name: <input type="text" name="name"></p>
 <p>Description: <input type="text" name="description"></p>
-<p>Select A City: <%@current_user.cities.each do |city|%>
+<p>Select A City:&nbsp;<%@current_user.cities.each do |city|%>
     <input type="checkbox" name="task[city_ids][]" value="<%=city.id%>" id="<%=city.id%>"><%=city.name%></input>
 <%end%><p/>
-<p>If no city is listed, create one!</p>
+<p>If the right city isn't listed, <a href="/cities/new">create it!</a></p>
 <input type="submit" name="submit" value="submit">
 </form>
