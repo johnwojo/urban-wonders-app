@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/login/' do
+  get '/login' do
     if logged_in?
       erb :'users/show'
     else
@@ -40,6 +40,14 @@ class UsersController < ApplicationController
       erb :'users/show'
     else
       redirect to "/signup"
+    end
+  end
+
+  get '/profile' do
+    if logged_in?
+      erb :'/users/show'
+    else
+      redirect to '/login'
     end
   end
 

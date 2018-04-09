@@ -49,12 +49,13 @@
   <div class="row">
     <div class="col-sm-4">
       <% if logged_in? %>
-        <h3><a href="/cities/">My Cities</a></h3>
-          <% @cities = @current_user.cities %>
+        <h3><a href="/profile">Profile</a></h3>
+        <h3><a href="/cities">Cities</a></h3>
+        <h3><a href="/tasks">Experiences</a></h3>
+          <!-- <% @cities = @current_user.cities %>
           <% @cities.each do |city| %>
           <p><%=city.name%></p>
-          <% end %>
-          <%= @current_user %>
+          <% end %> -->
       <% else %>
         <h3><a href="/login/">Login!</a></h3>
         <p>Log in to Urban Wonder and plan your next getaway! </p>

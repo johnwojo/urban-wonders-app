@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  get '/tasks/' do
+  get '/tasks' do
     if logged_in?
       @tasks = Task.all
     erb :'tasks/tasks'

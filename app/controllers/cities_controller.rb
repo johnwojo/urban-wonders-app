@@ -23,7 +23,11 @@ class CitiesController < ApplicationController
       if params[:name] == ""
         redirect to '/cities/new'
       else
-        @city = current_user.cities.build(name: params[:name])
+        @city = City.create(:name => params["Name"])
+        @city.user = User.find_or_create_by(:name => params["User Name"])
+        @city.user_ids = params[:users]
+        @city.save
+        # @city = current_user.cities.build(name: params[:name])
         if @city.save
           redirect to "/cities/#{@city.id}"
         else
