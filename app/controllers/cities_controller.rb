@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
 
-  get '/cities/' do
+  get '/cities' do
     if logged_in?
       @cities = City.all
       erb :'cities/cities'
@@ -84,7 +84,7 @@ class CitiesController < ApplicationController
         #  && @city.user == current_user
         @city.delete
       end
-      redirect to '/cities/'
+      redirect to '/cities'
     else
       redirect to '/login'
     end
