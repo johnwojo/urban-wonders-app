@@ -1,5 +1,6 @@
 <h3><%=@task.name%></h3>
 <p><%=@task.description%></p>
+<p>The task's city ID is:<%=@task.city_id%></p>
 
 <form method="POST" action="/tasks/<%=@task.id%>/delete">
 <input id="hidden" type="hidden" name="_method" value="delete">
