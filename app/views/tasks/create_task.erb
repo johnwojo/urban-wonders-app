@@ -1,9 +1,9 @@
 <h3>Create a Task</h3>
 <form method="POST" action="/tasks">
-<p>Name: <input type="text" name="name"></p>
-<p>Description: <input type="text" name="description"></p>
+<p>Name: <input type="text" name="task[name]"></p>
+<p>Description: <input type="text" name="task[description]"></p>
 <p>Select A City:&nbsp;<%@current_user.cities.each do |city|%>
-    <input type="checkbox" name="task[city_ids][]" value="<%=city.id%>" id="<%=city.id%>"><%=city.name%></input>
+    <input type="checkbox" name="task[city_id][]" value="<%=city.id%>" id="<%=city.id%>"><%=city.name%></input>
 <%end%><p/>
 <p>If the right city isn't listed, <a href="/cities/new">create it!</a></p>
 <input type="submit" name="submit" value="submit">
