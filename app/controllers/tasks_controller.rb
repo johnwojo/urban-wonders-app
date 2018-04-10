@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   get '/tasks' do
     if logged_in?
       @tasks = Task.all
@@ -13,25 +14,6 @@ class TasksController < ApplicationController
       erb :'tasks/create_task'
     else
       redirect to '/login'
-    end
-  end
-
-  post '/tasks' do
-    if logged_in?
-      if params[:name] == ""
-        redirect to '/tasks/new'
-      else
-        @task = Task.new(params[:task])
-        @task.city = City.find_by(params[:city_id])
-        @task.save
-        if @task.save
-          redirect to "/tasks/#{@task.id}"
-        else
-          redirect to '/tasks/new'
-        end
-      end
-    else
-      redirect to "/login"
     end
   end
 
@@ -58,6 +40,25 @@ class TasksController < ApplicationController
     end
   end
 
+  post '/tasks' do
+    if logged_in?
+      if params[:name] == ""
+        redirect to '/tasks/new'
+      else
+        @task = Task.new(params[:task])
+        @task.city = City.find_by(params[:city_id])
+        @task.save
+        if @task.save
+          redirect to "/tasks/#{@task.id}"
+        else
+          redirect to '/tasks/new'
+        end
+      end
+    else
+      redirect to "/login"
+    end
+  end
+
   patch '/tasks/:id' do
     if logged_in?
       if params[:name] == ""
@@ -73,7 +74,6 @@ class TasksController < ApplicationController
       redirect to '/login'
     end
   end
-
 
   delete '/tasks/:id/delete' do
     if logged_in?
