@@ -46,14 +46,15 @@ class CitiesController < ApplicationController
   post '/cities' do
     if logged_in?
       if params[:name] == ""
+        flash[:message] = "Make sure to fill out all fields"
         redirect to '/cities/new'
       else
-        @city = City.create(:name => params[:name])
-        @city.save
-        @current_user.cities << @city
+        @city = current_user.city.build(:name => params[:name])
         if @city.save
+          flash[:message] = "Your city was successfully saved."
           redirect to "/cities/#{@city.id}"
         else
+          flash[:message] = "Make sure to fill in all fields."
           redirect to '/cities/new'
         end
       end
