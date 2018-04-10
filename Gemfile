@@ -13,3 +13,5 @@ gem 'bcrypt'
 gem "tux"
 gem 'corneal'
 gem 'rack-flash3'
+gem 'activemodel'
+gem 'sinatra-flash'

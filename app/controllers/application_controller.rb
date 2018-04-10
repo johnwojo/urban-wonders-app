@@ -4,6 +4,7 @@ require 'sinatra'
 require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
+  use Sinatra::Flash
 
   configure do
     enable :sessions
