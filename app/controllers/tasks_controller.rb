@@ -22,7 +22,7 @@ class TasksController < ApplicationController
         redirect to '/tasks/new'
       else
         @task = Task.new(params[:task])
-        @task.city_id = params[:cities]
+        @task.city = City.find_by(params[:city_id])
         @task.save
         if @task.save
           redirect to "/tasks/#{@task.id}"
