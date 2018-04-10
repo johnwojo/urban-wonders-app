@@ -29,8 +29,7 @@ class TasksController < ApplicationController
   get '/tasks/:id/edit' do
     if logged_in?
       @task = Task.find_by_id(params[:id])
-      if @task
-        # && @city.user == current_user
+      if @task && @city.user == current_user
         erb :'tasks/edit_task'
       else
         redirect to '/tasks'
@@ -82,7 +81,7 @@ class TasksController < ApplicationController
         #  && @city.user == current_user
         @task.delete
       end
-      redirect to '/tasks/'
+      redirect to '/tasks'
     else
       redirect to '/login'
     end
