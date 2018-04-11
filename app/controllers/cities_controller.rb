@@ -30,8 +30,7 @@ class CitiesController < ApplicationController
   get '/cities/:id/edit' do
     if logged_in?
       @city = City.find_by_id(params[:id])
-      if @city
-        # && @city.user == current_user
+      if @city && @city.user == current_user
         erb :'cities/edit_city'
       else
         redirect to '/cities'
@@ -46,15 +45,19 @@ class CitiesController < ApplicationController
   post '/cities' do
     if logged_in?
       if params[:name] == ""
-        flash[:message] = "Make sure to fill out all fields"
+        # flash[:message] = "Make sure to fill out all fields"
         redirect to '/cities/new'
       else
-        @city = current_user.city.build(:name => params[:name])
+        @city = City.create(:name => params[:name])
+        @city.save
+        @current_user.cities << @city
+
+        # @city = current_user.city.build(:name => params[:name])
         if @city.save
-          flash[:message] = "Your city was successfully saved."
+          # flash[:message] = "Your city was successfully saved."
           redirect to "/cities/#{@city.id}"
         else
-          flash[:message] = "Make sure to fill in all fields."
+          # flash[:message] = "Make sure to fill in all fields."
           redirect to '/cities/new'
         end
       end
@@ -84,9 +87,13 @@ class CitiesController < ApplicationController
       @city = City.find_by_id(params[:id])
       if @city && @city.user == current_user
         @city.delete
+        # flash[:message] = "You successfully deleted your city."
+      else
+        # flash[:message] = "Sorry you don't have authority to delete this city."
       end
       redirect to '/cities'
     else
+      # flash[:message] = "Please login if you want to delete your city."
       redirect to '/login'
     end
   end
