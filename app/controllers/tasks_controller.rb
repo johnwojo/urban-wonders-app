@@ -2,9 +2,7 @@ class TasksController < ApplicationController
 
   get '/tasks' do
     if logged_in?
-      @tasks = Task.all #this is wrong. It assigns @tasks to ALL tasks of all users.
-      # @cities = current_user.cities #Instead we want to say, give me all the tasks of THIS user.
-      # @tasks = @cities.tasks #Like this. But cities don't know their tasks.  
+      @cities = current_user.cities
       erb :'tasks/tasks'
     else
       redirect to '/login'
@@ -47,7 +45,6 @@ class TasksController < ApplicationController
         redirect to '/tasks/new'
       else
         @task = Task.new(params[:task])
-        @task.city = City.find_by(params[:city_id])
         @task.save
         if @task.save
           redirect to "/tasks/#{@task.id}"
@@ -68,6 +65,7 @@ class TasksController < ApplicationController
         @task = Task.find_by_id(params[:id])
         @task.name = params[:name]
         @task.description = params[:description]
+        @task.city_id = params[:city_id]
         @task.save
         redirect to "/tasks/#{@task.id}"
       end

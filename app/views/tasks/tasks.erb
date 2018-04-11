@@ -1,4 +1,4 @@
 <h3>Welcome, <%=current_user.username%></h3>
-<% @tasks.each do |task| %> <!-- this is not working because it's being improperly assigned in TasksController-->
-<p><%= task.name%></p>
+<%current_user.tasks.each do |task|%>
+<p><%=task.name%></p>
 <% end %>

@@ -3,7 +3,7 @@
 <p>Name: <input type="text" name="task[name]"></p>
 <p>Description: <input type="text" name="task[description]"></p>
 <p>Select A City:&nbsp;<%@current_user.cities.each do |city|%>
-    <input type="checkbox" name="owner[name][] value="<%=city.id%>" id="<%=city.id%>"><%=city.name.capitalize%></input>
+    <input type="radio" name="task[city_id]" value="<%=city.id%>" id="<%=city.id%>"><%=city.name.capitalize%></input>
 <%end%><p/>
 <p>If the right city isn't listed, <a href="/cities/new">create it!</a></p>
 <input type="submit" name="submit" value="submit">

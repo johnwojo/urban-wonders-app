@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :cities
+  has_many :tasks, through: :cities
   has_secure_password
 
   def slug
