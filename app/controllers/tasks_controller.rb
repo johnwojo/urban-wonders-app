@@ -29,6 +29,8 @@ class TasksController < ApplicationController
   get '/tasks/:id/complete' do
     if logged_in?
       @task = Task.find_by_id(params[:id])
+      @task.complete = true
+      @task.save
       if @task && @task.city.user == current_user
         erb :'tasks/complete_task'
       else
@@ -58,6 +60,7 @@ class TasksController < ApplicationController
         redirect to '/tasks/new'
       else
         @task = Task.new(params[:task])
+        @task.complete = false
         @task.save
         if @task.save
           redirect to "/tasks/#{@task.id}"

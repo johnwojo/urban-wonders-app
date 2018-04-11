@@ -24,6 +24,8 @@
   <p>The world is full of adventure!</p>
 </div>
 
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
@@ -31,21 +33,28 @@
         <h3><a href="/profile">Profile</a></h3>
         <h3><a href="/cities">Cities</a></h3>
         <h3><a href="/tasks">Experiences</a></h3>
-          <!-- <% @cities = @current_user.cities %>
-          <% @cities.each do |city| %>
-          <p><%=city.name%></p>
-          <% end %> -->
       <% else %>
         <h3><a href="/login/">Login!</a></h3>
         <p>Log in to Urban Wonder and plan your next getaway! </p>
       <%end%>
     </div>
+
+
+
     <div class="col-sm-4">
       <%=yield%>
     </div>
+
     <div class="col-sm-4">
-      <h3>Memories</h3>
-      <p>This is a list of your completed experiences. Read through them for a walk down memory lane.</p>
+      <% if logged_in? %>
+        <h3>Memories</h3>
+        <p>This is a list of your completed experiences. Read through them for a walk down memory lane.</p>
+        <% current_user.tasks.each do |task| if task.complete == true %>
+        <p><%=task.name.capitalize%> // <%=task.city.name.capitalize%></p>
+          <% end %>
+        <% end %>
+      <% else %>
+      <% end %>
     </div>
   </div>
 </div>

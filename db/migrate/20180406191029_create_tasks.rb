@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.integer :city_id
+      t.boolean :complete
     end
   end
 end

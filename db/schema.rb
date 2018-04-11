@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180411203054) do
     t.string "name"
     t.string "description"
     t.integer "city_id"
+    t.boolean "complete"
   end
 
   create_table "users", force: :cascade do |t|
