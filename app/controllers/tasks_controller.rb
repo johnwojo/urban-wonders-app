@@ -26,6 +26,19 @@ class TasksController < ApplicationController
     end
   end
 
+  get '/tasks/:id/complete' do
+    if logged_in?
+      @task = Task.find_by_id(params[:id])
+      if @task && @task.city.user == current_user
+        erb :'tasks/complete_task'
+      else
+        redirect to '/tasks'
+      end
+    else
+      redirect to '/login'
+    end
+  end
+
   get '/tasks/:id/edit' do
     if logged_in?
       @task = Task.find_by_id(params[:id])
@@ -65,7 +78,6 @@ class TasksController < ApplicationController
         @task = Task.find_by_id(params[:id])
         @task.name = params[:name]
         @task.description = params[:description]
-        binding.pry
         @task.save
         redirect to "/tasks/#{@task.id}"
       end

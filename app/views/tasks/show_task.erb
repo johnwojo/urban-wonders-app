@@ -2,15 +2,17 @@
 <p>Description: <%=@task.description.capitalize%></p>
 <p>Location: <%=@task.city.name.capitalize%></p>
 
+
+
+<form action="/tasks/<%=@task.id%>/complete">
+    <input type="submit" value="Complete Task"/>
+</form>
+
 <form method="POST" action="/tasks/<%=@task.id%>/delete">
-<input id="hidden" type="hidden" name="_method" value="delete">
-<input type="submit" value="Complete Task">
-<input id="hidden" type="hidden" name="_method" value="delete">
-<input type="submit" value="Edit Task">
-<input id="hidden" type="hidden" name="_method" value="delete">
-<input type="submit" value="Delete Task">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Task">
+</form>
+
 <form action="/tasks/<%=@task.id%>/edit">
     <input type="submit" value="Edit Task" />
 </form>
-</form>
-<a href="/tasks/<%=@task.id%>/edit">Edit Task</a>
