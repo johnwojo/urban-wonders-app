@@ -11,16 +11,10 @@ use Rack::Flash
   end
 
   get '/' do
-    if logged_in?
-      @cities = City.all
       erb :index
-    else
-      erb :index
-    end
   end
 
   get '/index' do
-    @cities = City.all
     erb :index
   end
 
@@ -33,5 +27,4 @@ use Rack::Flash
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
   end
-
 end

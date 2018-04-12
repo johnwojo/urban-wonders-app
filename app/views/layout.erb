@@ -34,7 +34,7 @@
         <h3><a href="/cities">Cities</a></h3>
         <h3><a href="/tasks">Experiences</a></h3>
       <% else %>
-        <h3><a href="/login/">Login!</a></h3>
+        <h3><a href="/home">Home</a></h3>
         <p>Log in to Urban Wonder and plan your next getaway! </p>
       <%end%>
     </div>
@@ -54,15 +54,16 @@
       <% if logged_in? %>
         <h3>Memories</h3>
         <p>This is a list of your completed experiences. Read through them for a walk down memory lane.</p>
+
+        <p>If you don't see any memories here, go make some! Click <a href="/cities/new">Add City</a> or <a href="/tasks/new">Add Experience</a> to get started.</p>
         <% current_user.tasks.each do |task| if task.complete == true %>
         <p><%=task.name.capitalize%> // <%=task.city.name.capitalize%></p>
           <% end %>
-        <% end %>
-      <% else %>
+          <% end %>
+        <% else %>
       <% end %>
     </div>
   </div>
 </div>
-
 </body>
 </html>
