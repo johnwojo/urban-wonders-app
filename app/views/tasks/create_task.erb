@@ -1,14 +1,14 @@
 <h3>Create an Experience</h3>
 <form method="POST" action="/tasks">
-<p>Name: <input type="text" name="task[name]"></p>
-<p>Description: <input type="text" name="task[description]"></p>
-</br>
-<p><b>Select A City:</b><%@current_user.cities.each do |city|%>
+  <p>Name: <input type="text" name="task[name]"></p>
+  <p>Description: <input type="text" name="task[description]"></p>
+  </br>
+  <p><b>Select A City:</b><%@current_user.cities.each do |city|%>
     <p><input type="radio" name="task[city_id]" value="<%=city.id%>" id="<%=city.id%>">&nbsp;&nbsp;<%=city.name.capitalize %></p></input>
-<%end%><p/>
-</br>
-<input type="submit" name="submit" value="submit">
-</br>
-</br>
-<p>If the correct city isn't listed, <a href="/cities/new">create it!</a></p>
+    <%end%><p/>
+  </br>
+  <input type="submit" name="submit" value="submit">
+  </br>
+  </br>
+  <p>If the correct city isn't listed, <a href="/cities/new">create it!</a></p>
 </form>
