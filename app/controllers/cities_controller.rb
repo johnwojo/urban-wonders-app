@@ -51,13 +51,11 @@ class CitiesController < ApplicationController
         @city = City.create(:name => params[:name])
         @city.save
         @current_user.cities << @city
-
-        # @city = current_user.city.build(:name => params[:name])
         if @city.save
-          # flash[:message] = "Your city was successfully saved."
+          flash[:message] = "Your city was successfully saved."
           redirect to "/cities/#{@city.id}"
         else
-          # flash[:message] = "Make sure to fill in all fields."
+          flash[:message] = "Make sure to fill in all fields."
           redirect to '/cities/new'
         end
       end
@@ -87,13 +85,13 @@ class CitiesController < ApplicationController
       @city = City.find_by_id(params[:id])
       if @city && @city.user == current_user
         @city.delete
-        # flash[:message] = "You successfully deleted your city."
+        flash[:message] = "You successfully deleted your city."
       else
-        # flash[:message] = "Sorry you don't have authority to delete this city."
+        flash[:message] = "Sorry you don't have authority to delete this city."
       end
       redirect to '/cities'
     else
-      # flash[:message] = "Please login if you want to delete your city."
+      flash[:message] = "Please login if you want to delete your city."
       redirect to '/login'
     end
   end

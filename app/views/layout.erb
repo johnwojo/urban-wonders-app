@@ -42,6 +42,11 @@
 
 
     <div class="col-sm-4">
+      <div class="flash-message">
+  <% if !!flash[:message] %>
+    <%= flash[:message] %>
+    <% end %>
+  </div>
       <%=yield%>
     </div>
 

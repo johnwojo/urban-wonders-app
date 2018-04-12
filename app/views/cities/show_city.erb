@@ -1,7 +1,10 @@
 <h3><%=@city.name.capitalize%></h3>
+<% @city.tasks.each do |task| %>
+<p>- <a href="/tasks/<%=task.id%>"><%=task.name.capitalize%></a></p>
+<%end%>
 <form method="POST" action="/cities/<%=@city.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete City">
+  <form action="/cities/<%=@city.id%>/edit">
+      <input type="submit" value="Edit City"/>
 </form>
-<form action="/cities/<%=@city.id%>/edit">
-    <input type="submit" value="Edit City"/>
