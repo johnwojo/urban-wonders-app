@@ -2,7 +2,6 @@
 <p>Description: <%=@task.description.capitalize%></p>
 <p>Location: <%=@task.city.name.capitalize%></p>
 
-
 <% if @task.complete == false %>
 <form action="/tasks/<%=@task.id%>/complete">
     <input type="submit" value="Complete Task"/>
