@@ -47,7 +47,6 @@ class CitiesController < ApplicationController
   end
 
 
-
   post '/cities' do
     if logged_in?
       if params[:name] == ""
