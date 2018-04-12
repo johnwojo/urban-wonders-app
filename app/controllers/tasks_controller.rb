@@ -20,11 +20,16 @@ class TasksController < ApplicationController
   get '/tasks/:id' do
     if logged_in?
       @task = Task.find_by_id(params[:id])
-      erb :'/tasks/show_task'
-    else
-      redirect to '/login'
+      if @task && @task.city.user == current_user
+        erb :'/tasks/show_task'
+      else
+        flash[:message] = "Sorry. You don't have authority to see this task."
+        redirect to '/tasks'
+      end
+      else
+        redirect to '/login'
+      end
     end
-  end
 
   get '/tasks/:id/complete' do
     if logged_in?
@@ -34,6 +39,7 @@ class TasksController < ApplicationController
       if @task && @task.city.user == current_user
         erb :'tasks/complete_task'
       else
+        flash[:message] = "Sorry. You don't have authority to edit this experience."
         redirect to '/tasks'
       end
     else
@@ -47,6 +53,7 @@ class TasksController < ApplicationController
       if @task && @task.city.user == current_user
         erb :'tasks/edit_task'
       else
+        flash[:message] = "Sorry. You don't have authority to edit this experience."
         redirect to '/tasks'
       end
     else
@@ -92,9 +99,10 @@ class TasksController < ApplicationController
   delete '/tasks/:id/delete' do
     if logged_in?
       @task = Task.find_by_id(params[:id])
-      if @task
-        #  && @city.user == current_user
+      if @task && @task.city.user == current_user
         @task.delete
+      else
+        flash[:message] = "Sorry. You don't have authority to delete this experience."
       end
       redirect to '/tasks'
     else

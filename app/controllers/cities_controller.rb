@@ -20,7 +20,12 @@ class CitiesController < ApplicationController
   get '/cities/:id' do
     if logged_in?
       @city = City.find_by_id(params[:id])
+      if @city && @city.user == current_user
       erb :'/cities/show_city'
+      else
+        flash[:message] = "Sorry. You don't have authority to view this city."
+        redirect to '/cities'
+      end
     else
       redirect to '/login'
     end
@@ -33,6 +38,7 @@ class CitiesController < ApplicationController
       if @city && @city.user == current_user
         erb :'cities/edit_city'
       else
+        flash[:message] = "Sorry. You don't have authority to edit this city."
         redirect to '/cities'
       end
     else
