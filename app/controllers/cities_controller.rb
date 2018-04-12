@@ -45,7 +45,7 @@ class CitiesController < ApplicationController
   post '/cities' do
     if logged_in?
       if params[:name] == ""
-        # flash[:message] = "Make sure to fill out all fields"
+        flash[:message] = "Make sure to fill out all fields"
         redirect to '/cities/new'
       else
         @city = City.create(:name => params[:name])

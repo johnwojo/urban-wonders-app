@@ -1,4 +1,5 @@
 <h3>Welcome, <%=current_user.username%></h3>
-<%current_user.tasks.each do |task|%>
-<p><%=task.name%></p>
+<%current_user.tasks.each do |task| if task.complete == false %>
+<p><%=task.name.capitalize%></p>
+<% end %>
 <% end %>

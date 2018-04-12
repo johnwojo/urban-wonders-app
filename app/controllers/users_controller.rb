@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/profile' do
+  get '/home' do
     if logged_in?
       erb :'/users/show'
     else
