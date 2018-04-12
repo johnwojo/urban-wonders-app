@@ -92,7 +92,7 @@ class CitiesController < ApplicationController
         @city.delete
         flash[:message] = "You successfully deleted your city."
       else
-        flash[:message] = "Sorry you don't have authority to delete this city."
+        flash[:message] = "Sorry. You don't have authority to delete this city."
       end
       redirect to '/cities'
     else
