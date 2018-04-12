@@ -106,6 +106,7 @@ class TasksController < ApplicationController
       end
       redirect to '/tasks'
     else
+      flash[:message] = "Please login if you want to delete your city."
       redirect to '/login'
     end
   end
