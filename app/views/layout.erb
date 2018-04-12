@@ -57,7 +57,7 @@
 
         <p>If you don't see any memories here, go make some! Click <a href="/cities/new">Add City</a> or <a href="/tasks/new">Add Experience</a> to get started.</p>
         <% current_user.tasks.each do |task| if task.complete == true %>
-        <p><%=task.name.capitalize%> // <%=task.city.name.capitalize%></p>
+        <p><a href="/tasks/<%=task.id%>"><%=task.name.capitalize%></a> // <%=task.city.name.capitalize%></p>
           <% end %>
           <% end %>
         <% else %>

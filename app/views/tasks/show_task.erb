@@ -3,10 +3,11 @@
 <p>Location: <%=@task.city.name.capitalize%></p>
 
 
-
+<% if @task.complete == false %>
 <form action="/tasks/<%=@task.id%>/complete">
     <input type="submit" value="Complete Task"/>
 </form>
+<% end %>
 
 <form method="POST" action="/tasks/<%=@task.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
