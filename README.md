@@ -1,9 +1,12 @@
 # urban-wonders-app
 Urban Wonder is an app that allows you to keep track of your adventures. Plan the details of your upcoming travel and then record your experience along the way.
 
+# Demo
+Watch my demo here: https://www.youtube.com/watch?v=tCTDqVNhWnw&t=6s
+Read my blog post here: http://johnwojo.com/building_the_urban_wonder_app
 
  # Install Instructions
- 
+
  - Clone this repository
  - Run bundle install
  - Run rake db:migrate
