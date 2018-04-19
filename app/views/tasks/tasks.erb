@@ -1,4 +1,4 @@
-<h3>Welcome, <%=current_user.username.capitalize%>!</h3>
+<h3>Welcome <%=current_user.username.capitalize%>!</h3>
 <%current_user.tasks.each do |task| if task.complete == false %>
 <p><a href="/tasks/<%=task.id%>"><%=task.name.capitalize%></a></p>
 <% end %>
