@@ -3,9 +3,6 @@ class User < ActiveRecord::Base
   has_many :tasks, through: :cities
   has_secure_password
 
-
-  @golf = []
-
   def slug
     username.gsub(" ","-").downcase
   end
